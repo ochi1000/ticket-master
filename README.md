@@ -32,6 +32,8 @@ Start Project
     
 ## API Reference
 API is live follow the link to test
+
+For authenticated routes, please copy the token into the collections Bearer Token field 
 ```http
   https://documenter.getpostman.com/view/16322338/2s9YXk2LF7
 ```
@@ -44,4 +46,9 @@ To deploy this project run
 ```bash
   Docker build
 ```
+
+
+## Running Tests
+
+Check the API test tabs, to run tests
 
