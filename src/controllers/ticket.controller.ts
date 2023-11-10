@@ -116,4 +116,11 @@ const acquireTicket =async (req:Request, res:Response) => {
     
 }
 
-export {createTicket, acquireTicket}
+const getTickets =async (req:Request, res:Response) => {
+
+    // get Acquired Tickets
+    const tickets = await Ticket.findAll();
+    return res.status(200).send({data:{tickets}})
+}
+
+export {createTicket, acquireTicket, getTickets}

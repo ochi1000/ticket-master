@@ -2,6 +2,7 @@ import { Request, Response, response } from "express";
 import User from "../models/user.model.js";
 import Account from "../models/account.model.js";
 import AccountTransaction from "../models/account_transaction.model.js";
+import AcquiredTicket from "../models/acquired_ticket.model.js";
 // import AccountTransaction from "../models/transaction.model.js";    
 
 const create = async (req:Request, res:Response) => {
@@ -20,7 +21,7 @@ const create = async (req:Request, res:Response) => {
             }
         });
         if(!userExists){
-            return res.status(400).send({message: 'User does not exist'})
+            return res.status(404).send({message: 'User does not exist'})
         }
     
         // check account exists
@@ -87,7 +88,10 @@ const getAccountDetails =async (req:Request, res:Response) => {
         where: {
             id:account_id,
         },
-        include: [{model: AccountTransaction, as: 'credit', required: false}, {model: AccountTransaction, as: 'debit', required: false}]
+        include: [
+            {model: AccountTransaction, as: 'credit', required: false}, 
+            {model: AccountTransaction, as: 'debit', required: false} 
+        ]
     });
     if (!account) {
         return res.status(400).send({message:'Account does not exist'});

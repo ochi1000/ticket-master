@@ -1,10 +1,11 @@
 import express from 'express';
-import { acquireTicket, createTicket } from '../controllers/ticket.controller.js';
+import { acquireTicket, createTicket, getTickets } from '../controllers/ticket.controller.js';
 
 const router = express.Router();
 
 // Register Route
 router.post('/', createTicket);
+router.get('/', getTickets);
 router.post('/acquire', acquireTicket);
 
 
